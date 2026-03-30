@@ -32,7 +32,7 @@ tobia-link start
 ### Linux (manual install)
 
 ```bash
-VERSION=v0.1.4
+VERSION=v0.1.5
 curl -fL -o tobia-link_${VERSION}_linux_amd64.tar.gz \
   https://github.com/ihou/tobia-link-releases/releases/download/${VERSION}/tobia-link_${VERSION#v}_linux_amd64.tar.gz
 tar -xzf tobia-link_${VERSION}_linux_amd64.tar.gz
@@ -44,37 +44,16 @@ tobia-link start
 
 Use WSL2 (Ubuntu) and follow the Linux steps above inside WSL.
 
-## Pairing Flow (Recommended)
+## Run
 
 ```bash
 tobia-link start
 ```
 
-What `start` does:
-
-1. Bootstrap agent config automatically (if needed)
-2. Print terminal QR code and `pairing_token`
-3. Start `serve` in background
-4. Print stop hint
-
-Stop it anytime:
+Stop:
 
 ```bash
 tobia-link stop
-```
-
-Running without args is equivalent to `tobia-link start`.
-
-## Advanced / Compatibility Commands
-
-These commands are still available for compatibility:
-
-```bash
-tobia-link bootstrap
-tobia-link pair --qr
-tobia-link status
-tobia-link serve
-tobia-link ui
 ```
 
 ## Update

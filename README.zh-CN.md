@@ -30,7 +30,7 @@ tobia-link start
 ### Linux（手动安装）
 
 ```bash
-VERSION=v0.1.4
+VERSION=v0.1.5
 curl -fL -o tobia-link_${VERSION}_linux_amd64.tar.gz \
   https://github.com/ihou/tobia-link-releases/releases/download/${VERSION}/tobia-link_${VERSION#v}_linux_amd64.tar.gz
 tar -xzf tobia-link_${VERSION}_linux_amd64.tar.gz
@@ -42,37 +42,16 @@ tobia-link start
 
 建议使用 WSL2（Ubuntu），在 WSL 中按 Linux 步骤安装和运行。
 
-## 配对流程（推荐）
+## 运行
 
 ```bash
 tobia-link start
 ```
 
-`start` 会自动完成：
-
-1. 如未初始化则自动 bootstrap
-2. 在终端打印二维码和 `pairing_token`
-3. 后台启动 `serve`
-4. 提示如何停止
-
-停止命令：
+停止：
 
 ```bash
 tobia-link stop
-```
-
-直接执行 `tobia-link`（无参数）等同于 `tobia-link start`。
-
-## 高级 / 兼容命令
-
-如需调试或兼容旧流程，仍可使用：
-
-```bash
-tobia-link bootstrap
-tobia-link pair --qr
-tobia-link status
-tobia-link serve
-tobia-link ui
 ```
 
 ## 更新
