@@ -26,40 +26,55 @@ Simplified Chinese: [README.zh-CN.md](./README.zh-CN.md)
 ```bash
 brew tap ihou/tobia
 brew install tobia-link
-tobia-link
+tobia-link start
 ```
 
 ### Linux (manual install)
 
 ```bash
-VERSION=v0.1.1
+VERSION=v0.1.4
 curl -fL -o tobia-link_${VERSION}_linux_amd64.tar.gz \
   https://github.com/ihou/tobia-link-releases/releases/download/${VERSION}/tobia-link_${VERSION#v}_linux_amd64.tar.gz
 tar -xzf tobia-link_${VERSION}_linux_amd64.tar.gz
 sudo install -m 0755 tobia-link /usr/local/bin/tobia-link
-tobia-link
+tobia-link start
 ```
 
 ### Windows
 
 Use WSL2 (Ubuntu) and follow the Linux steps above inside WSL.
 
-## Pairing Flow
-
-1. Start `tobia-link`.
-2. Scan the QR code from Tobia mobile.
-3. Keep `tobia-link` running while using Tobia mobile.
-
-On desktop environments, `tobia-link` opens a local web UI by default.
-On headless environments, it prints a terminal QR code.
-
-## Common Commands
+## Pairing Flow (Recommended)
 
 ```bash
-tobia-link           # smart start (UI on desktop / terminal QR on headless)
-tobia-link serve     # only run relay connection loop
-tobia-link ui        # only run local web UI
-tobia-link status    # print current agent config
+tobia-link start
+```
+
+What `start` does:
+
+1. Bootstrap agent config automatically (if needed)
+2. Print terminal QR code and `pairing_token`
+3. Start `serve` in background
+4. Print stop hint
+
+Stop it anytime:
+
+```bash
+tobia-link stop
+```
+
+Running without args is equivalent to `tobia-link start`.
+
+## Advanced / Compatibility Commands
+
+These commands are still available for compatibility:
+
+```bash
+tobia-link bootstrap
+tobia-link pair --qr
+tobia-link status
+tobia-link serve
+tobia-link ui
 ```
 
 ## Update

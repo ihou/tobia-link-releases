@@ -24,40 +24,55 @@
 ```bash
 brew tap ihou/tobia
 brew install tobia-link
-tobia-link
+tobia-link start
 ```
 
 ### Linux（手动安装）
 
 ```bash
-VERSION=v0.1.1
+VERSION=v0.1.4
 curl -fL -o tobia-link_${VERSION}_linux_amd64.tar.gz \
   https://github.com/ihou/tobia-link-releases/releases/download/${VERSION}/tobia-link_${VERSION#v}_linux_amd64.tar.gz
 tar -xzf tobia-link_${VERSION}_linux_amd64.tar.gz
 sudo install -m 0755 tobia-link /usr/local/bin/tobia-link
-tobia-link
+tobia-link start
 ```
 
 ### Windows
 
 建议使用 WSL2（Ubuntu），在 WSL 中按 Linux 步骤安装和运行。
 
-## 配对流程
-
-1. 启动 `tobia-link`
-2. 在 Tobia 手机端扫码绑定
-3. 使用期间保持 `tobia-link` 持续运行
-
-在桌面环境下，`tobia-link` 默认会打开本地网页 UI；  
-在纯命令行环境下，会在终端打印二维码。
-
-## 常用命令
+## 配对流程（推荐）
 
 ```bash
-tobia-link           # 智能启动（桌面端打开 UI / 无桌面打印终端二维码）
-tobia-link serve     # 只启动长连接转发
-tobia-link ui        # 只启动本地网页 UI
-tobia-link status    # 查看当前 agent 配置
+tobia-link start
+```
+
+`start` 会自动完成：
+
+1. 如未初始化则自动 bootstrap
+2. 在终端打印二维码和 `pairing_token`
+3. 后台启动 `serve`
+4. 提示如何停止
+
+停止命令：
+
+```bash
+tobia-link stop
+```
+
+直接执行 `tobia-link`（无参数）等同于 `tobia-link start`。
+
+## 高级 / 兼容命令
+
+如需调试或兼容旧流程，仍可使用：
+
+```bash
+tobia-link bootstrap
+tobia-link pair --qr
+tobia-link status
+tobia-link serve
+tobia-link ui
 ```
 
 ## 更新
